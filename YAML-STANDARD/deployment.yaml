@@ -25,19 +25,25 @@ kind: Ingress
 metadata:
   name: fastapi-ingress
   namespace: standard
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: traefik
   rules:
   - host: fastapi.willdf.fr
     http:
       paths:
-        - path: /
-          pathType: Prefix
-          backend:
-             service:
-              name: fastapi-service
-              port:
-                number: 5000
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: fastapi-service
+            port:
+              number: 5000
+  tls:
+  - hosts:
+    - fastapi.willdf.fr
+    secretName: letsencrypt-prod
 
 ---
 
@@ -204,3 +210,21 @@ spec:
  minReplicas: 3
  maxReplicas: 6
  targetCPUUtilizationPercentage: 70
+
+---
+
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer # I'm using ClusterIssuer here
+metadata:
+  name: letsencrypt-prod
+  namespace: standard
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: william.dalfarra1@gmail.com
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+    - http01:
+        ingress:
+          class: traefik 
