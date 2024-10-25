@@ -111,6 +111,9 @@ spec:
           image: killuazoaldyek/my_fastapi
           ports:
             - containerPort: 5000
+          resources:
+            requests:
+              cpu: "100m"
 
 ---
 
