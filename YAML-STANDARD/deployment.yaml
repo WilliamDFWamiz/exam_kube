@@ -1,7 +1,4 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: standard
+
 
 ---
 
@@ -43,7 +40,7 @@ spec:
   tls:
   - hosts:
     - fastapi.willdf.fr
-    secretName: letsencrypt-prod
+    secretName: fastapi-cert-tls
 
 ---
 
@@ -70,16 +67,19 @@ spec:
           name: postgresql
           env:
             - name: POSTGRES_USER
-              value: "admin"
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-user-data
+                  key: user
             - name: POSTGRES_PASSWORD
-              value: "password"
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-user-data
+                  key: password
             - name: POSTGRES_DB
               value: "storedb"
             - name: POSTGRES_HOST_AUTH_METHOD
               value: "trust"
-#          envFrom:
-#           - secretRef:
-#                name: postgres-user-data
           ports:
             - containerPort: 5432
               protocol: TCP
@@ -147,7 +147,10 @@ spec:
             - name: PGADMIN_DEFAULT_EMAIL
               value: admin@example.com
             - name: PGADMIN_DEFAULT_PASSWORD
-              value: admin
+              valueFrom:
+                secretKeyRef:
+                  name: pgadmin-user-data
+                  key: password
 
 ---
 
@@ -179,6 +182,7 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
+      nodePort: 30080
 
 ---
 
@@ -214,7 +218,7 @@ spec:
 ---
 
 apiVersion: cert-manager.io/v1
-kind: ClusterIssuer # I'm using ClusterIssuer here
+kind: ClusterIssuer
 metadata:
   name: letsencrypt-prod
   namespace: standard

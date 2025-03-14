@@ -1,0 +1,53 @@
+=== Logs FastAPI [2025-03-14 18:23:16] ===
+Status des pods FastAPI :
+fastapi-deployment-7965854cb9-928fb   1/1     Running   2 (34m ago)   34m
+fastapi-deployment-7965854cb9-h5zbf   1/1     Running   2 (34m ago)   34m
+fastapi-deployment-7965854cb9-sbt5j   1/1     Running   2 (34m ago)   34m
+\nLogs détaillés :
+\n=== Logs du pod fastapi-deployment-7965854cb9-928fb ===
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+INFO:     10.42.0.8:43882 - "GET / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:44106 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     10.42.0.8:54684 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:54684 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:54684 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:54684 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:54684 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:54684 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:43224 - "GET / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:56174 - "GET /favicon.ico HTTP/1.1" 405 Method Not Allowed
+INFO:     10.42.0.8:34516 - "GET /favicon.ico HTTP/1.1" 405 Method Not Allowed
+\n=== Logs du pod fastapi-deployment-7965854cb9-h5zbf ===
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+INFO:     10.42.0.8:34820 - "GET /docs HTTP/1.1" 200 OK
+INFO:     10.42.0.8:46950 - "GET /users/count HTTP/1.1" 200 OK
+INFO:     10.42.0.8:59248 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:59248 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:59248 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:59248 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:59248 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:59248 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:39906 - "GET /favicon.ico HTTP/1.1" 405 Method Not Allowed
+INFO:     10.42.0.8:53560 - "GET / HTTP/1.1" 200 OK
+\n=== Logs du pod fastapi-deployment-7965854cb9-sbt5j ===
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+INFO:     10.42.0.8:54032 - "GET /docs HTTP/1.1" 200 OK
+INFO:     10.42.0.8:49508 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:49508 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:49508 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:49508 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:49508 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:49508 - "POST / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:49508 - "GET /users/count HTTP/1.1" 200 OK
+INFO:     10.42.0.8:39568 - "GET / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:56004 - "GET / HTTP/1.1" 200 OK
+INFO:     10.42.0.8:44272 - "GET /favicon.ico HTTP/1.1" 405 Method Not Allowed
